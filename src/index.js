@@ -2,29 +2,61 @@ import "./style.css"
 import "bootstrap/dist/css/bootstrap.css"
 import * as bootstrap from 'bootstrap';
 import '@popperjs/core';
-import "./jokeFacade"
-import jokeFacade from "./jokeFacade"
+import lootFacade from "./lootFacade";
 
-document.getElementById("all-content").style.display = "block"
+updateLoottable();
 
-/* 
-  Add your JavaScript for all exercises Below or in separate js-files, which you must the import above
-*/
+function updateLoottable() {
 
-/* JS For Exercise-1 below */
-
-
-/* JS For Exercise-2 below */
-
-
-
-/* JS For Exercise-3 below */
+    lootFacade.getLoot().then(lootList => {
+      const lootRow = lootList.map(loot => `${createLootRow(loot)}`)
+      lootRow.reverse()
+      const lootListAsString = lootRow.join("")
+      document.getElementById("allLootRows").innerHTML = lootListAsString;
+    })
+}
 
 
-/* 
-Do NOT focus on the code below, UNLESS you want to use this code for something different than
-the Period2-week2-day3 Exercises
-*/
+
+
+function createLootRow(loot){
+  return `
+    <tr>
+      <td>${loot.id}</td>
+      <td>${loot.playerName}</td>
+      <td>${loot.area}</td>
+      <td>${loot.lootDescription}</td>
+      <td><input id="${loot.id}" type="button"  name="delete" value="delete"/></td>
+    </tr>
+
+  `
+}
+
+function addLoot(){
+  const data = {
+    playerName: document.getElementById("PlayerName").value,
+    area: document.getElementById("Area").value,
+    loot: document.getElementById("loot").value
+  }
+
+  lootFacade.addLoot(data).then(updateLoottable());
+
+}
+
+
+document.getElementById("addLootBtn").addEventListener('click',addLoot);
+
+document.getElementById("allLootRows").addEventListener('click', e => {
+  e.preventDefault();
+  const node = e.target;
+  const name = node.getAttribute("name")
+  const id = node.getAttribute("id")
+  switch (name) {
+    case "delete": lootFacade.deleteLoot(id); break;
+  }
+})
+
+
 
 function hideAllShowOne(idToShow)
 {
@@ -48,7 +80,7 @@ function menuItemClicked(evt)
   evt.preventDefault();
 }
 document.getElementById("menu").onclick = menuItemClicked;
-hideAllShowOne("about_html");
+hideAllShowOne("ex3_html");
 
 
 

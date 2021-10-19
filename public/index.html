@@ -13,7 +13,7 @@
     first in index.js
     REMEMBER to set display to "block" in index.js, otherwise you will not see anything
   -->
-  <div id="all-content" style="display: none;">
+  <div id="all-content" style="display: block;">
     <ul id="menu" class="header">
       <li><a href="" id="about">About</a></li>
       <li><a href="" id="ex1">Ex1</a></li>
@@ -43,41 +43,39 @@
 
 
       <!-- This is were you should place your basic HTML for exercise-3 -->
-      <div id="ex3_html" style="display:none;">
-        <h3>Ex-3</h3>
+      <div id="ex3_html" style="display:block;">
+        <h3>Loot</h3>
         <p>Add your basic HTML for Exercise 3 here</p>
 
-        <div class="row" style="min-height: 5em;"">
-      <div class=" col-md-8 pre-scrollable" style="background-color: lightgrey;">
-          <h5>All Users</h5>
-          <table class="table">
+        <div class="form-group">
+          <label for="PlayerName">Player name</label>
+          <input type="text" id="PlayerName" name="PlayerName" ></input>
+          <label for="Area">Area</label>
+          <input type="text" id="Area" name="Area" ></input>
+          <label for="loot">loot</label>
+          <input type="text" id="loot" name="loot" placeholder="Blank for no loot"></input>
+
+          <button type="button" class="btn btn-success" id="addLootBtn">add kill</button>
+        </div>
+        <div class="row" style="min-height: 5em;">
+        <div class=" col-md-8 pre-scrollable">
+          <h5>Loot List </h5>
+          <table class="table table-striped">
             <thead>
               <tr>
-                <th>Id</th>
-                <th>Age</th>
-                <th>Name
-                <th>
-                <th>Gender</th>
-                <th>Email </th>
+                <th>id</th>
+                <th>PlayerName</th>
+                <th>Area</th>
+                <th>Loot</th>
             </thead>
-            <tbody id="allUserRows">
+            <tbody id="allLootRows">
             <tbody>
           </table>
         </div>
-        <div class="col-md-4" style="background-color: powderblue;">
-          <h5>Find User</h5>
+        <div >
+          
         </div>
-      </div>
-      <div class="row" style="min-height: 5em;">
-        <div class="col-md-4" style="background-color: powderblue;">
-          <h5>Add User</h5>
-        </div>
-        <div class="col-md-4" style="background-color: lightgrey;">
-          <h5>Edit User</h5>
-        </div>
-        <div class="col-md-4" style="background-color: powderblue;">
-          <h5>Delete User</h5>
-        </div>
+      
       </div>
       <!-- </div> -->
       <!-- End of HTML for exercise-3 -->
